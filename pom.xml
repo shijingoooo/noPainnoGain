@@ -45,6 +45,37 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <!--部署到Tomcat-->
+            <!-- Tomcat 配置角色
+                <role rolename="manager-script" />
+                <role rolename="manager-gui"/>
+                <user username="admin" password="aptx4869" roles="manager-gui,manager-script" />
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <!-- 远程tomcat下manager路径 -->
+                    <url>http://localhost:8080/manager/text</url>
+                    <!-- maven setting 中配置
+                    <server>
+                        <id>tomcat8</id>
+                        <username>admin</username>
+                        <password>aptx4869</password>
+                    </server>
+                    -->
+                    <server>tomcat8</server>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
