@@ -77,4 +77,14 @@ public class SystemConfig {
         this.sdescribe = sdescribe;
     }
 
+    @Override
+    public String toString() {
+        return "SystemConfig{" +
+                "id=" + id +
+                ", sname='" + sname + '\'' +
+                ", scode='" + scode + '\'' +
+                ", sstatus='" + sstatus + '\'' +
+                ", sdescribe='" + sdescribe + '\'' +
+                '}';
+    }
 }

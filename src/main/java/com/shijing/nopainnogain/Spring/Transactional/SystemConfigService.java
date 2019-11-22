@@ -1,5 +1,6 @@
 package com.shijing.nopainnogain.Spring.Transactional;
 
+import com.shijing.nopainnogain.Spring.annotation.Master;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
@@ -30,9 +31,15 @@ public class SystemConfigService {
         return config.getSstatus();
     }
 
+    @Master
+    @Transactional
     public SystemConfig addConfig(String name, String code, String status, String describe) {
         SystemConfig config = new SystemConfig(name, code, status, describe);
         return systemConfigDao.save(config);
+    }
+
+    public SystemConfig getConfig(String code) {
+        return systemConfigDao.findByScode(code);
     }
 
     public int save(String version) {
