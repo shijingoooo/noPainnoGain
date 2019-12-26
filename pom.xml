@@ -78,6 +78,12 @@
             <version>2.7.0</version>
         </dependency>
         <!--swagger2 end-->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jersey</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
