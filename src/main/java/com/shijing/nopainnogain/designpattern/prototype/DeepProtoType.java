@@ -33,33 +33,31 @@ public class DeepProtoType implements Serializable, Cloneable {
 
     public Object deepClone() {
         // 创建流对象
-        ByteArrayOutputStream bos = null;
-        ObjectOutputStream oos = null;
-        ByteArrayInputStream bis = null;
-        ObjectInputStream ois = null;
+        // ByteArrayOutputStream bos = null;
+        // ObjectOutputStream oos = null;
+        // ByteArrayInputStream bis = null;
+        // ObjectInputStream ois = null;
 
-        try {
-            // 序列化
-            bos = new ByteArrayOutputStream();
-            oos = new ObjectOutputStream(bos);
+        try (
+                // 序列化
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                ObjectOutputStream oos = new ObjectOutputStream(bos)
+        ) {
             oos.writeObject(this);
 
             // 反序列化
-            bis = new ByteArrayInputStream(bos.toByteArray());
-            ois = new ObjectInputStream(bis);
-            return ois.readObject();
+            try (
+                 ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
+                 ObjectInputStream ois = new ObjectInputStream(bis)
+            ) {
+                return ois.readObject();
+            } catch (Exception e) {
+                return null;
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
             return null;
-        } finally {
-            try {
-                bos.close();
-                oos.close();
-                bis.close();
-                ois.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
     }
 }
