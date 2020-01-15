@@ -1,0 +1,9 @@
+package com.shijing.nopainnogain.designpattern.iteratorpattern;
+
+public interface Iterator<E> {
+    boolean hasNext();
+
+    E next();
+
+    void remove();
+}
