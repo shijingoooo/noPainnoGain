@@ -1,4 +1,4 @@
-package com.shijing.nopainnogain.Demo;
+package com.shijing.nopainnogain.Demo.juc;
 
 import java.util.concurrent.Phaser;
 

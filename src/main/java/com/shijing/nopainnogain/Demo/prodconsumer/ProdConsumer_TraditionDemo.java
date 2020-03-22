@@ -1,4 +1,4 @@
-package com.shijing.nopainnogain.Demo;
+package com.shijing.nopainnogain.Demo.prodconsumer;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
