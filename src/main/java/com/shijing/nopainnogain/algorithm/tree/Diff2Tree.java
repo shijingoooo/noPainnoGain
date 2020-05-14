@@ -1,4 +1,4 @@
-package com.shijing.nopainnogain.algorithm;
+package com.shijing.nopainnogain.algorithm.tree;
 
 /**
  * @program:
