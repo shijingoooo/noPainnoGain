@@ -32,3 +32,40 @@
 select IFNULL(
   (SELECT distinct Salary from Employee order by Salary desc limit 1 offset 1),NULL)
    as SecondHighestSalary
+
+-- 编写一个 SQL 查询，来删除 Person 表中所有重复的电子邮箱，重复的邮箱里只保留 Id 最小 的那个。
+--
+-- +----+------------------+
+-- | Id | Email            |
+-- +----+------------------+
+-- | 1  | john@example.com |
+-- | 2  | bob@example.com  |
+-- | 3  | john@example.com |
+-- +----+------------------+
+-- Id 是这个表的主键。
+-- 例如，在运行你的查询语句之后，上面的 Person 表应返回以下几行:
+--
+-- +----+------------------+
+-- | Id | Email            |
+-- +----+------------------+
+-- | 1  | john@example.com |
+-- | 2  | bob@example.com  |
+-- +----+------------------+
+
+-- 方法一：DELETE + 子查询，实测效率更高
+DELETE FROM Person
+WHERE Id NOT IN (   -- 删除不在查询结果中的值
+    SELECT id FROM
+   (
+       SELECT MIN(Id) AS Id -- 排除Email相同时中Id较大的行
+       FROM Person
+       GROUP BY Email
+   ) AS temp    -- 此处需使用临时表，否则会发生报错
+)
+
+-- 方法二：官方题解，DELETE + 自连接
+DELETE P1
+FROM Person P1, Person P2
+WHERE P1.Email = P2.Email   -- 利用where进行自连接
+AND P1.Id > P2.Id   -- 选择Id较大的行
+
