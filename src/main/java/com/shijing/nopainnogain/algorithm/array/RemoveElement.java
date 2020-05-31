@@ -1,4 +1,4 @@
-package com.shijing.nopainnogain.algorithm.Array;
+package com.shijing.nopainnogain.algorithm.array;
 
 import java.util.Arrays;
 
