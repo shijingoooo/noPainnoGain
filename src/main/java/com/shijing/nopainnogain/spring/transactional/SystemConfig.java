@@ -1,4 +1,4 @@
-package com.shijing.nopainnogain.Spring.Transactional;
+package com.shijing.nopainnogain.spring.transactional;
 
 import javax.persistence.*;
 

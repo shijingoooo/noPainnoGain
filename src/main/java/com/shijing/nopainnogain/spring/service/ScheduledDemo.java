@@ -1,6 +1,5 @@
-package com.shijing.nopainnogain.Spring.service;
+package com.shijing.nopainnogain.spring.service;
 
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,4 +1,4 @@
-package com.shijing.nopainnogain.Spring.vo;
+package com.shijing.nopainnogain.spring.vo;
 
 public class UserVo {
     private long id;

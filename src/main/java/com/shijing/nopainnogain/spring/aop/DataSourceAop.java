@@ -1,4 +1,4 @@
-package com.shijing.nopainnogain.Spring.aop;
+package com.shijing.nopainnogain.spring.aop;
 
 import com.shijing.nopainnogain.config.dataSource.DBContextHolder;
 import org.aspectj.lang.annotation.Aspect;
@@ -10,20 +10,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class DataSourceAop {
 
-    @Pointcut("!@annotation(com.shijing.nopainnogain.Spring.annotation.Master) " +
-            "&& (execution(* com.shijing.nopainnogain.Spring.Transactional..*.select*(..)) " +
-            "|| execution(* com.shijing.nopainnogain.Spring.Transactional..*.get*(..)))")
+    @Pointcut("!@annotation(com.shijing.nopainnogain.spring.annotation.Master) " +
+            "&& (execution(* com.shijing.nopainnogain.spring.transactional..*.select*(..)) " +
+            "|| execution(* com.shijing.nopainnogain.spring.transactional..*.get*(..)))")
     public void readPointcut() {
 
     }
 
-    @Pointcut("@annotation(com.shijing.nopainnogain.Spring.annotation.Master) " +
-            "|| execution(* com.shijing.nopainnogain.Spring.Transactional..*.insert*(..)) " +
-            "|| execution(* com.shijing.nopainnogain.Spring.Transactional..*.add*(..)) " +
-            "|| execution(* com.shijing.nopainnogain.Spring.Transactional..*.update*(..)) " +
-            "|| execution(* com.shijing.nopainnogain.Spring.Transactional..*.edit*(..)) " +
-            "|| execution(* com.shijing.nopainnogain.Spring.Transactional..*.delete*(..)) " +
-            "|| execution(* com.shijing.nopainnogain.Spring.Transactional..*.remove*(..))")
+    @Pointcut("@annotation(com.shijing.nopainnogain.spring.annotation.Master) " +
+            "|| execution(* com.shijing.nopainnogain.spring.transactional..*.insert*(..)) " +
+            "|| execution(* com.shijing.nopainnogain.spring.transactional..*.add*(..)) " +
+            "|| execution(* com.shijing.nopainnogain.spring.transactional..*.update*(..)) " +
+            "|| execution(* com.shijing.nopainnogain.spring.transactional..*.edit*(..)) " +
+            "|| execution(* com.shijing.nopainnogain.spring.transactional..*.delete*(..)) " +
+            "|| execution(* com.shijing.nopainnogain.spring.transactional..*.remove*(..))")
     public void writePointcut() {
 
     }

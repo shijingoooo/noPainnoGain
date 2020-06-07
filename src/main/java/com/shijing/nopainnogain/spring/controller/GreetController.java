@@ -1,4 +1,4 @@
-package com.shijing.nopainnogain.Spring.controller;
+package com.shijing.nopainnogain.spring.controller;
 
 import com.google.gson.Gson;
 import org.slf4j.Logger;

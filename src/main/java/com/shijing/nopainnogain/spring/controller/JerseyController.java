@@ -1,6 +1,6 @@
-package com.shijing.nopainnogain.Spring.controller;
+package com.shijing.nopainnogain.spring.controller;
 
-import com.shijing.nopainnogain.Spring.vo.UserVo;
+import com.shijing.nopainnogain.spring.vo.UserVo;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
