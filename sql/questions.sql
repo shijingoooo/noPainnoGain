@@ -181,3 +181,110 @@ e1.DepartmentId = d.Id AND
     WHERE e2.Salary > e1.Salary
     AND e2.DepartmentId = e1.DepartmentId
 )
+
+-- 编写一个 SQL 查询，查找所有至少连续出现三次的数字。
+--
+-- +----+-----+
+-- | Id | Num |
+-- +----+-----+
+-- | 1  |  1  |
+-- | 2  |  1  |
+-- | 3  |  1  |
+-- | 4  |  2  |
+-- | 5  |  1  |
+-- | 6  |  2  |
+-- | 7  |  2  |
+-- +----+-----+
+-- 例如，给定上面的 Logs 表， 1 是唯一连续出现至少三次的数字。
+--
+-- +-----------------+
+-- | ConsecutiveNums |
+-- +-----------------+
+-- | 1               |
+-- +-----------------+
+-- #①首先遍历一遍整张表，找出每个数字的连续重复次数
+-- #具体方法为：
+--     #初始化两个变量，一个为pre，记录上一个数字；一个为count，记录上一个数字已经连续出现的次数。
+--     #然后调用if()函数，如果pre和当前行数字相同，count加1极为连续出现的次数；如果不同，意味着重新开始一个数字，count重新从1开始。
+--     #最后，将当前的Num数字赋值给pre，开始下一行扫描。
+--     select
+--         Num,    #当前的Num 数字
+--         if(@pre=Num,@count := @count+1,@count := 1) as nums, #判断 和 计数
+--         @pre:=Num   #将当前Num赋值给pre
+--     from Logs as l ,
+--         (select @pre:= null,@count:=1) as pc #这里需要别名
+--     #上面这段代码执行结果就是一张三列为Num,count as nums,pre的表。
+--
+-- #②将上面表的结果中，重复次数大于等于3的数字选出，再去重即为连续至少出现三次的数字。
+--     select
+--         distinct Num as ConsecutiveNums
+--     from
+--         (select Num,
+--                 if(@pre=Num,@count := @count+1,@count := 1) as nums,
+--                 @pre:=Num
+--             from Logs as l ,
+--                 (select @pre:= null,@count:=1) as pc
+--         ) as n
+--     where nums >=3;
+
+-- 方法：用 DISTINCT 和 WHERE 语句
+-- 算法
+--
+-- 连续出现的意味着相同数字的 Id 是连着的，由于这题问的是至少连续出现 3 次，我们使用 Logs 并检查是否有 3 个连续的相同数字。
+--
+--
+SELECT *
+FROM
+    Logs l1,
+    Logs l2,
+    Logs l3
+WHERE
+    l1.Id = l2.Id - 1
+    AND l2.Id = l3.Id - 1
+    AND l1.Num = l2.Num
+    AND l2.Num = l3.Num
+-- Id	Num	Id	Num	Id	Num
+-- 1	1	2	1	3	1
+-- 注意：前两列来自 l1 ，接下来两列来自 l2 ，最后两列来自 l3 。
+--
+-- 然后我们从上表中选择任意的 Num 获得想要的答案。同时我们需要添加关键字 DISTINCT ，因为如果一个数字连续出现超过 3 次，会返回重复元素。
+--
+-- MySQL
+SELECT DISTINCT
+    l1.Num AS ConsecutiveNums
+FROM
+    Logs l1,
+    Logs l2,
+    Logs l3
+WHERE
+    l1.Id = l2.Id - 1
+    AND l2.Id = l3.Id - 1
+    AND l1.Num = l2.Num
+    AND l2.Num = l3.Num
+
+-- Employee 表包含所有员工信息，每个员工有其对应的 Id, salary 和 department Id。
+--
+-- +----+-------+--------+--------------+
+-- | Id | Name  | Salary | DepartmentId |
+-- +----+-------+--------+--------------+
+-- | 1  | Joe   | 70000  | 1            |
+-- | 2  | Henry | 80000  | 2            |
+-- | 3  | Sam   | 60000  | 2            |
+-- | 4  | Max   | 90000  | 1            |
+-- +----+-------+--------+--------------+
+-- Department 表包含公司所有部门的信息。
+--
+-- +----+----------+
+-- | Id | Name     |
+-- +----+----------+
+-- | 1  | IT       |
+-- | 2  | Sales    |
+-- +----+----------+
+-- 编写一个 SQL 查询，找出每个部门工资最高的员工。例如，根据上述给定的表格，Max 在 IT 部门有最高工资，Henry 在 Sales 部门有最高工资。
+--
+-- +------------+----------+--------+
+-- | Department | Employee | Salary |
+-- +------------+----------+--------+
+-- | IT         | Max      | 90000  |
+-- | Sales      | Henry    | 80000  |
+-- +------------+----------+--------+
