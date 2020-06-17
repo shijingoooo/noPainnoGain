@@ -288,3 +288,13 @@ WHERE
 -- | IT         | Max      | 90000  |
 -- | Sales      | Henry    | 80000  |
 -- +------------+----------+--------+
+
+SELECT d.Name AS Department, e.Name AS Employee, e.Salary AS Salary
+FROM Department d, Employee e
+WHERE d.Id = e.DepartmentId
+AND (e.Salary, e.DepartmentId) IN
+(
+  SELECT MAX(Salary) AS Salary,DepartmentId
+  FROM Employee
+  GROUP BY DepartmentId
+)
