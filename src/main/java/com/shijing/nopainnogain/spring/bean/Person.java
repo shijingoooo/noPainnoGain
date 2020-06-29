@@ -1,4 +1,4 @@
-package com.shijing.nopainnogain.Spring.bean;
+package com.shijing.nopainnogain.spring.bean;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
