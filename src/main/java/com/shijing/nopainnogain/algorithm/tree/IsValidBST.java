@@ -62,11 +62,11 @@ public class IsValidBST {
 
             root = stack.pop();
 
-            if (root.value <= pre) {
+            if (root.val <= pre) {
                 return false;
             }
 
-            pre = root.value;
+            pre = root.val;
 
             root = root.right;
         }

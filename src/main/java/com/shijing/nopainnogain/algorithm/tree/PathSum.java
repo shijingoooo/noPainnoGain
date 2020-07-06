@@ -61,7 +61,7 @@ public class PathSum {
         if(root == null){
             return 0;
         }
-        sum = sum - root.value;
+        sum = sum - root.val;
         int result = sum == 0 ? 1:0;
         return result + countPath(root.left,sum) + countPath(root.right,sum);
     }

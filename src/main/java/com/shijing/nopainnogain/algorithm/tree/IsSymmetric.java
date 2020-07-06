@@ -52,7 +52,7 @@ public class IsSymmetric {
             return false;
         }
 
-        return (t1.value.equals(t2.value)
+        return ((t1.val == t2.val)
                 && isMirror(t1.left, t2.right)
                 && isMirror(t1.right, t2.left));
 

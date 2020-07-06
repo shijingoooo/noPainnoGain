@@ -53,7 +53,7 @@ public class LevelOrderBottom {
         }
 
         for (TreeNode node : listNode) {
-            one.add(node.value);
+            one.add(node.val);
             if (node.left != null) {
                 treeNodeList.add(node.left);
             }

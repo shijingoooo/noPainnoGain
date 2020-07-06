@@ -35,7 +35,7 @@ public class RightSideView {
                     queue.offer(node.right);
                 }
                 if (i == size - 1) {  //将当前层的最后一个节点放入结果列表
-                    res.add(node.value);
+                    res.add(node.val);
                 }
             }
         }

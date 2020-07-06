@@ -11,12 +11,12 @@ public class TreeNode{
 
     TreeNode right;
 
-    Integer value;
+    int val;
 
-    public TreeNode(TreeNode left, TreeNode right, Integer value) {
+    public TreeNode(TreeNode left, TreeNode right, int value) {
         this.left = left;
         this.right = right;
-        this.value = value;
+        this.val = value;
     }
 
     public TreeNode getLeft() {
@@ -36,10 +36,10 @@ public class TreeNode{
     }
 
     public Integer getValue() {
-        return value;
+        return val;
     }
 
     public void setValue(Integer value) {
-        this.value = value;
+        this.val = value;
     }
 }

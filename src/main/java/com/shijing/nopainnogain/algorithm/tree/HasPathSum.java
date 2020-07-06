@@ -42,7 +42,7 @@ public class HasPathSum {
             return false;
         }
 
-        sum = sum - root.value;
+        sum = sum - root.val;
 
         if (root.right == null && root.left == null) {
             return sum == 0;
