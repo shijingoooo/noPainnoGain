@@ -1,4 +1,4 @@
-package com.shijing.nopainnogain.Spring.jpa;
+package com.shijing.nopainnogain.spring.jpa;
 
 /**
  * @description:
