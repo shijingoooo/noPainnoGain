@@ -18,7 +18,7 @@
         <java.version>1.8</java.version>
     </properties>
 
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
@@ -95,6 +95,26 @@
         </dependency>
         <!--activemq end-->
 
+        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.6</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.66</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.4.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -109,6 +129,7 @@
                 <role rolename="manager-gui"/>
                 <user username="admin" password="aptx4869" roles="manager-gui,manager-script" />
             -->
+            <!--
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -124,18 +145,18 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-                    <!-- 远程tomcat下manager路径 -->
+                    &lt;!&ndash; 远程tomcat下manager路径 &ndash;&gt;
                     <url>http://localhost:8080/manager/text</url>
-                    <!-- maven setting 中配置
+                    &lt;!&ndash; maven setting 中配置
                     <server>
                         <id>tomcat8</id>
                         <username>admin</username>
                         <password>aptx4869</password>
                     </server>
-                    -->
+                    &ndash;&gt;
                     <server>tomcat8</server>
                 </configuration>
-            </plugin>
+            </plugin>-->
         </plugins>
     </build>
 
