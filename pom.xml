@@ -57,6 +57,12 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
+        <!-- 单元测试使用内存数据库 -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -140,6 +146,21 @@
             <version>5.4.0</version>
         </dependency>
 
+        <!-- FFmpegFrameGrabber ffmpeg 截帧 -->
+        <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>javacv-platform</artifactId>
+            <version>1.5.4</version>
+        </dependency>
+        <!-- end -->
+
+        <!-- jCasbin start -->
+        <dependency>
+            <groupId>org.casbin</groupId>
+            <artifactId>casbin-spring-boot-starter</artifactId>
+            <version>0.4.0</version>
+        </dependency>
+        <!-- end -->
     </dependencies>
 
     <build>

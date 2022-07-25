@@ -6,21 +6,21 @@ spring:
     username: shijing
     password: 123456
 
-# Hikari will use the above plus the following to setup connection pooling
+    # Hikari will use the above plus the following to setup connection pooling
     type: com.zaxxer.hikari.HikariDataSource
-#³ØÖĞÎ¬»¤µÄ×îĞ¡¿ÕÏĞÁ¬½ÓÊı
+    #æ± ä¸­ç»´æŠ¤çš„æœ€å°ç©ºé—²è¿æ¥æ•°
     hikari:
       minimum-idle: 5
-#³ØÖĞ×î´óÁ¬½ÓÊı£¬°üÀ¨ÏĞÖÃºÍÊ¹ÓÃÖĞµÄÁ¬½Ó
+      #æ± ä¸­æœ€å¤§è¿æ¥æ•°ï¼ŒåŒ…æ‹¬é—²ç½®å’Œä½¿ç”¨ä¸­çš„è¿æ¥
       maximum-pool-size: 15
-#×Ô¶¯Ìá½»´Ó³ØÖĞ·µ»ØµÄÁ¬½Ó
+      #è‡ªåŠ¨æäº¤ä»æ± ä¸­è¿”å›çš„è¿æ¥
       auto-commit: true
-#Á¬½ÓÔÊĞíÔÚ³ØÖĞÏĞÖÃµÄ×î³¤Ê±¼ä
+      #è¿æ¥å…è®¸åœ¨æ± ä¸­é—²ç½®çš„æœ€é•¿æ—¶é—´
       idle-timeout: 30000
-#Á¬½Ó³ØµÄÓÃ»§¶¨ÒåÃû³Æ£¬Ö÷Òª³öÏÖÔÚÈÕÖ¾¼ÇÂ¼ºÍJMX¹ÜÀí¿ØÖÆÌ¨ÖĞÒÔÊ¶±ğ³ØºÍ³ØÅäÖÃ
+      #è¿æ¥æ± çš„ç”¨æˆ·å®šä¹‰åç§°ï¼Œä¸»è¦å‡ºç°åœ¨æ—¥å¿—è®°å½•å’ŒJMXç®¡ç†æ§åˆ¶å°ä¸­ä»¥è¯†åˆ«æ± å’Œæ± é…ç½®
       pool-name: DatebookHikariCP
-#³ØÖĞÁ¬½Ó×î³¤ÉúÃüÖÜÆÚ
+      #æ± ä¸­è¿æ¥æœ€é•¿ç”Ÿå‘½å‘¨æœŸ
       max-lifetime: 1800000
-#µÈ´ıÀ´×Ô³ØµÄÁ¬½ÓµÄ×î´óºÁÃëÊı
+      #ç­‰å¾…æ¥è‡ªæ± çš„è¿æ¥çš„æœ€å¤§æ¯«ç§’æ•°
       connection-timeout: 30000
       connection-test-query: SELECT 1

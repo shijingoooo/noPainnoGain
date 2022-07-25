@@ -437,3 +437,50 @@ WHERE (
   OR (s3.id = s1.id -1 AND s1.id = s2.id - 1 AND s3.id = s2.id -2)
 ) AND s1.people >= 100 AND s2.people >= 100 AND s3.people >= 100
 ORDER BY s1.id
+
+-- 自关联表 父子关系查询
+-- 链接：https://m.tqwba.com/x_d/jishu/344806.html
+-- https://cloud.tencent.com/developer/article/1028068
+
+-- @preScore 这种是变量声明，类似之前的set ，set @a = 1；
+-- :=  赋值，@preScore := 1，表示给@preScore赋值为1；
+-- (SELECT @curRank := 0 AS curRank, @preScore := NULL AS preRank) i  单独派生出一个表，记得要加别名，不然会包如下的错误
+--
+-- Every derived table must have its own alias -- 派生出来的表都要有一个别名
+-- 查询所有的子节点 （不含自己）
+SELECT
+    u2.*
+FROM
+    (
+        SELECT
+            @ids AS p_ids,
+            ( SELECT @ids := GROUP_CONCAT( category_id ) FROM t_case_category WHERE FIND_IN_SET( parent_id, @ids ) ) AS c_ids,
+    @l := @l + 1 AS LEVEL
+FROM
+    t_case_category,
+    ( SELECT @ids := 113, @l := 0 ) b # 此处为需要传递的父类别 category_id
+
+    ) u1
+    JOIN t_case_category u2 ON FIND_IN_SET( u2.category_id, u1.p_ids )
+    AND u2.category_id != 113 # 排除自己
+
+WHERE
+    u1.p_ids IS NOT NULL
+
+-- 查询所有的父节点（不包含自己）
+SELECT
+    u2.*
+FROM
+    (
+        SELECT
+            @id AS c_ids,
+            ( SELECT @id := GROUP_CONCAT( parent_id ) FROM t_case_category WHERE FIND_IN_SET( category_id, @id ) ) AS p_ids,
+    @l := @l + 1 AS LEVEL
+FROM
+    t_case_category,
+    ( SELECT @id := 30, @l := 0 ) b
+    ) u1 # 此处为需要传递的子类别 category_id
+    JOIN t_case_category u2 ON u1.c_ids = u2.category_id
+WHERE
+    c_ids IS NOT NULL
+  AND category_id != 30 # 排除自己
