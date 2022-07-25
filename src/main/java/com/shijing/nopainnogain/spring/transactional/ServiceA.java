@@ -1,4 +1,4 @@
-package com.shijing.nopainnogain.Spring.Transactional;
+package com.shijing.nopainnogain.spring.transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

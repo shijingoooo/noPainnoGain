@@ -1,6 +1,6 @@
-package com.shijing.nopainnogain.Spring.Transactional;
+package com.shijing.nopainnogain.spring.transactional;
 
-import com.shijing.nopainnogain.Spring.annotation.Master;
+import com.shijing.nopainnogain.spring.annotation.Master;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;

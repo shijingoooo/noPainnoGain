@@ -19,5 +19,20 @@ public class HeapOOM {
         /*while (true) {
             list.add(new OOMObject());
         }*/
+        HeapOOM heapOOM = new HeapOOM();
+        int y=heapOOM.aaa();
+        System.out.println(y);
+    }
+    public int aaa(){
+        int x=1;
+        try{
+            return ++x;
+        }catch(Exception e){
+        }finally{
+            ++x;
+            return x;
+
+        }
+        //System.out.println("atguigu");
     }
 }
